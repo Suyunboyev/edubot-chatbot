@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBot — AI O'qituvchi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">⬡</span>
+          <span class="logo-text">EduBot</span>
+        </div>
+        <button class="new-chat-btn" id="newChatBtn">
+          <span class="btn-icon">+</span>
+          <span>Yangi suhbat</span>
+        </button>
+      </div>
+
+      <div class="sidebar-label">Suhbatlar</div>
+
+      <div class="chat-list" id="chatList">
+        <div class="empty-list">Hali suhbat yo'q</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+
+      <!-- Welcome screen -->
+      <div class="welcome" id="welcome">
+        <div class="welcome-badge">AI O'qituvchi</div>
+        <h1 class="welcome-title">Nimani o'rganmoqchisiz?</h1>
+        <p class="welcome-sub">Istalgan mavzuni yozing — tushuntiraman, keyin test ham tuzib beraman.</p>
+
+        <!-- Welcome input -->
+        <div class="welcome-input-wrap">
+          <textarea
+            id="welcomeInput"
+            class="welcome-input"
+            placeholder="Istalgan mavzuni yozing… masalan: 'Atom tuzilishi', 'JavaScript', 'Tarix…'"
+            rows="1"
+          ></textarea>
+          <button class="welcome-send-btn" id="welcomeSendBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+
+        <div class="suggestions-label">Yoki tanlang:</div>
+
+        <div class="suggestion-grid">
+          <button class="suggestion-card" data-topic="Python dasturlash tili asoslari">
+            <span class="s-icon">🐍</span>
+            <span>Python asoslari</span>
+          </button>
+          <button class="suggestion-card" data-topic="Neyron tarmoqlar nima va qanday ishlaydi">
+            <span class="s-icon">🧠</span>
+            <span>Neyron tarmoqlar</span>
+          </button>
+          <button class="suggestion-card" data-topic="SQL ma'lumotlar bazasi asoslari">
+            <span class="s-icon">🗄️</span>
+            <span>SQL asoslari</span>
+          </button>
+          <button class="suggestion-card" data-topic="Fotosintez jarayoni">
+            <span class="s-icon">🌿</span>
+            <span>Fotosintez</span>
+          </button>
+          <button class="suggestion-card" data-topic="Kvant fizikasi va to'lqin-zarra dualizmi">
+            <span class="s-icon">⚛️</span>
+            <span>Kvant fizikasi</span>
+          </button>
+          <button class="suggestion-card" data-topic="Iqtisodiyotda talab va taklif qonuni">
+            <span class="s-icon">📈</span>
+            <span>Talab va taklif</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat view -->
+      <div class="chat-view hidden" id="chatView">
+        <div class="chat-header">
+          <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+          <span class="chat-title-header" id="chatTitleHeader">Suhbat</span>
+          <div class="header-actions">
+            <button class="header-btn" id="deleteChatBtn" title="Suhbatni o'chirish">🗑</button>
+          </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="input-area">
+          <div class="input-wrap">
+            <textarea
+              id="msgInput"
+              class="msg-input"
+              placeholder="Savol yozing yoki mavzu bering..."
+              rows="1"
+            ></textarea>
+            <button class="send-btn" id="sendBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="input-hint">Enter — yuborish · Shift+Enter — yangi qator</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Test Modal -->
+  <div class="modal-overlay hidden" id="testModal">
+    <div class="modal" id="testModalContent">
+      <div class="modal-header">
+        <span class="modal-tag">TEST</span>
+        <h2 class="modal-title" id="testTopic">Mavzu</h2>
+        <button class="modal-close" id="closeModal">✕</button>
+      </div>
+      <div class="questions-wrap" id="questionsWrap"></div>
+      <div class="modal-footer">
+        <button class="submit-btn" id="submitTest">Natijani ko'rish</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

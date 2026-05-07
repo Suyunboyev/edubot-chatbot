@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres:olim2004@localhost:5432/edubot_db"
+    "postgresql://postgres:DB_PASSWORD@localhost:5432/edubot_db"
 )
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
